@@ -1,6 +1,6 @@
 import React from 'react'
 import config from '../config.js'
-import TableRows from './TableRows.jsx'
+import TableRows from './Libraries/TableRows.jsx'
 
 class Products extends React.Component {
     constructor() {
@@ -11,10 +11,10 @@ class Products extends React.Component {
     }
 
     componentDidMount() {
-        fetch(config.apiUrl + '/products')
+      fetch(config.apiUrl + '/products')
             .then(response => response.json())
             .then(responseJson => {
-              console.log(responseJson);
+              //console.log(responseJson);
                 this.setState({
                   products: responseJson.products
                 })
