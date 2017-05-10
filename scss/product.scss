@@ -10,3 +10,27 @@
     }
   }
 }
+
+.product-info{
+  float: right;
+  hr{
+    border: 2px solid black;
+  }
+  .title{
+    h2, span{
+      display: inline-block;
+    }
+  }
+  .span{
+    color: grey;
+    margin-left: 10px;
+  }
+  .add-to-cart{
+    input{
+      width: 60px;
+    }
+    button{
+      margin-top: 20px;
+    }
+  }
+}

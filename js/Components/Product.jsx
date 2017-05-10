@@ -2,14 +2,40 @@ import React from 'react'
 import config from '../config.js'
 import ProductImage from './Libraries/ProductImage.jsx'
 import ProductImages from './Libraries/ProductImages.jsx'
+import ProductInfo from './Libraries/ProductInfo.jsx'
 
 class Product extends React.Component {
   constructor(props){
     super(props);
     this.state={
       product: {},
-      id: this.props.params.id
+      id: this.props.params.id,
+      products: {}
     }
+  }
+
+  handleAddToCartButtonClick = () => {
+    let product = this.state.products
+    product.id = this.state.product.id
+
+    fetch(config.apiUrl + '/addToCart', {
+      method: "POST",
+      body: JSON.stringify({
+        cartId: localStorage.getItem('cart'),
+        products: product
+      })
+    })
+  /*  .then( () =>{
+      this.setState({
+        products: {}
+      })
+    })*/
+  }
+
+  handleQuantityChange = event =>{
+    this.setState({
+      products: {quantity: event.target.value}
+    })
   }
 
   componentWillMount() {
@@ -42,6 +68,17 @@ class Product extends React.Component {
             }
           </div>
           <div className="col-md-6 col-sm-12">
+            {
+              this.hasData ? <ProductInfo
+                name={this.state.product.name}
+                price={this.state.product.price}
+                quantity={this.state.product.quantity}
+                description={this.state.product.description}
+                available={this.state.product.available}
+                btnHandleClick={this.handleAddToCartButtonClick}
+                qntHandleChange={this.handleQuantityChange}
+               /> : null
+            }
           </div>
       </div>
 
