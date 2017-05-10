@@ -4,7 +4,7 @@ import ProductImage from './ProductImage.jsx'
 
 class ProductImages extends React.Component {
   render(){
-    return <ul>
+    return <ul className="product-images">
       {
         this.props.images.map(element =>{
           return <li key={element.id}>

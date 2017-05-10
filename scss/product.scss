@@ -1,0 +1,12 @@
+.product-images{
+  margin-bottom: 100px;
+  li{
+    list-style: none;
+    display: inline-block;
+    margin-left: 10px;
+    img{
+      width: 100px;
+      height: 100px;
+    }
+  }
+}

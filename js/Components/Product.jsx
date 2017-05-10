@@ -12,22 +12,34 @@ class Product extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     fetch(config.apiUrl + "/product/" + this.state.id)
       .then(response => response.json())
       .then(responseJson => {
-          console.log(responseJson);
+          //console.log(responseJson);
           this.setState({
             product: responseJson.product
           })
       })
   }
 
+  componentDidMount() {
+  this.hasData = false;
+      if(this.state.product !== {}){
+        this.hasData = true;
+      }
+  }
+
   render(){
     return <div className="row">
       <div className="col-md-12 col-lg-12 col-sm-12">
           <div className="col-md-6 col-sm-12">
-            <ProductImage url={this.state.product.product_images[0].url}/>
+            {
+              this.hasData ? <ProductImage url={this.state.product.product_images[0].url} /> : null
+            }
+            {
+              this.hasData ? <ProductImages images={this.state.product.product_images} /> : null
+            }
           </div>
           <div className="col-md-6 col-sm-12">
           </div>
