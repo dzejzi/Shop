@@ -14,7 +14,7 @@ class Cart extends React.Component {
     fetch(config.apiUrl + '/getCart/' + localStorage.getItem('cart'))
     .then(response => response.json())
     .then(responseJson =>{
-      console.log(responseJson);
+      //console.log(responseJson);
       this.setState({
         products: responseJson.items
       })
@@ -37,13 +37,16 @@ class Cart extends React.Component {
   }
 
   handleDeleteClick = event =>{
-    fetch(config.apiUrl + "/cart/delete/" + event.target.dataset.id)
-      .then(response => response.json())
-      .then(responseJson =>{
-        this.setState({
-          product: responseJson.items
+    if(confirm("Do you really want delete this item?")){
+      fetch(config.apiUrl + "/cart/delete/" + event.target.dataset.id)
+        .then(response => response.json())
+        .then(responseJson =>{
+          this.setState({
+            product: responseJson.items
+          })
         })
-      })
+    }
+
   }
 
   render(){
