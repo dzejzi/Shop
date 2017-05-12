@@ -1,10 +1,11 @@
 import React from 'react'
 import config from '../config.js'
 import CartTableRows from './Libraries/CartTableRows.jsx'
+import { hashHistory } from 'react-router'
 
 class Cart extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state={
       products: []
     }
@@ -15,14 +16,17 @@ class Cart extends React.Component {
     .then(response => response.json())
     .then(responseJson =>{
       //console.log(responseJson);
-      this.setState({
-        products: responseJson.items
-      })
+      if(responseJson.items.length > 0){
+        this.setState({
+          products: responseJson.items
+        })
+        this.hasData = true
+      }
     })
   }
 
   componentDidMount(){
-    this.hasData = false
+  this.hasData = false
     if(this.state.products !== []){
       this.hasData = true
     }
@@ -41,12 +45,18 @@ class Cart extends React.Component {
       fetch(config.apiUrl + "/cart/delete/" + event.target.dataset.id)
         .then(response => response.json())
         .then(responseJson =>{
+          if(responseJson.items.length <= 0){
+            this.hasData = false
+          }
           this.setState({
             product: responseJson.items
           })
         })
     }
+  }
 
+  handleOrderClick=()=>{
+    hashHistory.push("/cart/" + this.props.params.id + '/form')
   }
 
   render(){
@@ -65,14 +75,19 @@ class Cart extends React.Component {
                       photo={element.product.product_images[0].url}
                       productSum={element.quantity*element.product.price}
                       deleteButton={this.handleDeleteClick} />
-                 }) : null
+                 }) : <tr><td><h2>Your cart is empty!</h2></td></tr>
                 }
               </tbody>
             </table>
 
             <div className="totalSum">
                 Total: {this.countAllElements()}
-            </div>
+            </div> <br/>
+            {
+              this.state.products.length > 0 ? <button type="button" className="btn btn-success" onClick={this.handleOrderClick}>
+                Checkout
+              </button> : null
+            }
 
         </div>
 
