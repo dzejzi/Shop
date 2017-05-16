@@ -1,0 +1,21 @@
+html, body{
+  background-color: #def087;
+  font-family: 'Bree Serif', serif;
+}
+
+.navbar{
+    background-color: #3b53bb;
+    color: white;
+
+    .navbar-brand{
+      color: red;
+    }
+
+    i{
+      color: white;
+    }
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: white;
+}

@@ -31,16 +31,3 @@ document.addEventListener("DOMContentLoaded", function(){
   )
 
 });
-
-/*
-stałe elementy
-menu-lista produktów
-zamówienia, koszyk
-stopka kontakt-formularz
-lista produktów
-tabelka, 2 kolumny, klikalny row do widoku produktu
-
--foto-nazwy, opis,
-ile sztuk z dostępnych
-
-*/

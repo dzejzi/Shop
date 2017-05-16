@@ -86,36 +86,3 @@ class Products extends React.Component {
 }
 
 export default Products
-
-
-class Dziecko extends React.Component{
-  constructor(props){
-    super(props);
-      this.state={
-        wiek: 13
-      }
-    }
-
-    let time = setTimeout({
-        wiek: this.state.wiek + 5
-    }, 5000)
-  }
-
-  render(){
-    return <li>{this.props.name} {this.props.nazwisko} {this.state.wiek}</li>
-  }
-}
-
-class Rodzic extends React.Component{
-  render(){
-    return <div>
-    <ul>
-      <Dziecko imię="Jaś" nazwisko="Kowalski"/> <li>Jaś Kowalski 13/18</li>
-      <Dziecko imię="Joanna" nazwisko="Zielona"/>
-      <Dziecko imię="Anna" nazwisko="Krzak"/>
-      <li> Natalia Jakaśtam 2</li>
-    </ul>
-
-    </div>
-  }
-}

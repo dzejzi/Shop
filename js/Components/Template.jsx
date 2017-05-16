@@ -25,7 +25,7 @@ class Template extends React.Component{
                       <span className="icon-bar"></span>
                       <span className="icon-bar"></span>
                   </button>
-                  <IndexLink className="navbar-brand" to="/">Candy Shop</IndexLink>
+                  <IndexLink className="navbar-brand" to="/">Flower bouquet</IndexLink>
               </div>
 
               <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -50,7 +50,7 @@ class Template extends React.Component{
       <div className="container">{this.props.children}</div>
       <footer className="navbar navbar-inverse navbar-fixed-bottom">
           <div className="container-fluid">
-              Copyright &copy; 2017. Created by WRO_FRO_S_05
+              Copyright &copy; 2017. Created by dzejzi
           </div>
       </footer>
 
