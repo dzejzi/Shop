@@ -1,21 +1,35 @@
 html, body{
-  background-color: #def087;
+  background-color: white;
   font-family: 'Bree Serif', serif;
 }
 
 .navbar{
-    background-color: #3b53bb;
-    color: white;
+    background-color: #def087;
+    color: #0b2e1a;
 
     .navbar-brand{
+      font-size: 24px;
       color: red;
+      &:hover{
+        color: white;
+      }
     }
 
     i{
-      color: white;
+      color:  #0b2e1a;
+      &:hover{
+        color: white;
+      }
     }
 }
 
 .navbar-default .navbar-nav > li > a {
-    color: white;
+    color:  #0b2e1a;
+    &:hover{
+      color: white;
+    }
+}
+
+.navbar{
+  border: none;
 }
